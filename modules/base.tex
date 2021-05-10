@@ -1,0 +1,64 @@
+%!TEX root = ../document.tex
+
+\documentclass[
+    % Print only one side of a paper, alternate: twoside
+    oneside,
+    % Font size (recommended by DHBW)
+    12pt,
+    % 
+    parskip=half,
+    % Needed to add indices to tableofcontents
+    liststotoc
+]{scrreprt}
+
+
+%-START-ENCODING---------------------------------------------------------------%
+% Support other language encodings, e.g. 'ä', 'ö', 'ü'. Include this packages 
+% in every latex document.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%-END-ENCODING-----------------------------------------------------------------%
+
+
+% Use the following babel packages, set last as default.
+\usepackage[english, ngerman]{babel}
+
+% Use prettier font.
+% Other fonts: palatino, goudysans, lmodern, libertine
+\usepackage{lmodern}
+
+% Include figures.
+\usepackage{graphicx}
+
+% Use strings and make string operations, such as \IfStrEq available.
+\usepackage{xstring}
+
+% Enables doublespacing. This improves the layout for the cover a lot.
+% It is recommended to use this package, so it is in the base module.
+\usepackage{setspace}
+
+
+%-BEGIN-DEFINE-NEW-COMMANDS----------------------------------------------------%
+% Check document type.
+\newcommand{\IfDocType}[3]{%
+    \IfStrEq{\setDocumentType}{#1}{#2}{#3}%
+}%
+
+% Check if string is empty.
+\newcommand{\IfStrIsEmpty}[3]{%
+    \IfStrEq{#1}{}{#2}{#3}%
+}%
+%-END-DEFINE-NEW-COMMANDS------------------------------------------------------%
+
+
+%-BEGIN-FIXES------------------------------------------------------------------%
+% Fix: Pin chapter headings at top of page.
+\renewcommand*\chapterheadstartvskip{}
+
+\clubpenalty=10000
+\widowpenalty=10000
+%-END-FIXES--------------------------------------------------------------------%
+
+% Load the language file, if not exists, load default.
+\edef\BaseFile{res/i18n/\setDocumentLanguage/base}%
+\input{\BaseFile}

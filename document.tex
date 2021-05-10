@@ -1,0 +1,88 @@
+%------------------------------------------------------------------------------%
+% This is the root document. Compile this document with
+%   $ pdflatex document
+% to generate a PDF file.
+% To compile your glossaries and acronyms, run:
+%   $ makeglossaries document
+% To compile your bibliography, run:
+%   % biber document
+%
+% Make sure that you have all neccessary latex packages installed.
+% To disable some functionality, just comment it out.
+%------------------------------------------------------------------------------%
+
+% Define settings
+\input{settings/general}
+
+% Define base module
+% This module define all basic utils that are provided by this template.
+% It's not recommended to comment this out.
+\input{modules/base}
+
+% Define other modules
+% If not neccessary, comment it out.
+% 
+% To find the lines that makes the following packages necessary, search for the
+% #<module>.
+\input{modules/abstract} % #abstract
+\input{modules/bibliography} % #bibliography
+\input{modules/glossaries} % #glossaries
+
+
+\begin{document}
+    % Site counter (recommended)
+    \newcounter{savepage}
+
+    % Cover
+    \input{modules/cover}
+
+    %--------------------------------------------------------------------------%
+    % Set site style to roman numbering
+    \pagenumbering{roman}
+    %--------------------------------------------------------------------------%
+
+    % Restriction
+    % Automatically disabled, if you set `\restrictedDocument` to `no`
+    \IfStrEq{\restrictDocument}{yes}{%
+        \input{modules/restriction_notice}
+        \newpage
+    }{}%
+
+    % Declaration of honor
+    \input{modules/declaration}
+    \newpage
+
+    % Abstract
+    \input{docs/abstract} % #abstract
+
+    %-Indices------------------------------------------------------------------%
+    \tableofcontents
+    
+    % Acronyms
+    \printglossary[title=\sAcronymPhrase, type=\acronymtype] % #glossaries
+
+    \listoffigures
+    \listoftables
+    %--------------------------------------------------------------------------%
+
+    %-Set-site-style-to-arabic-numbering---------------------------------------%
+    \cleardoublepage
+    \setcounter{savepage}{\arabic{page}}
+    \pagenumbering{arabic}
+    %--------------------------------------------------------------------------%
+
+    % Content
+    \input{content}
+
+    %-Change-site-style-to-roman-numbering-------------------------------------%
+    \cleardoublepage
+    \pagenumbering{roman}
+    \setcounter{page}{\thesavepage}
+    %--------------------------------------------------------------------------%
+
+    % Bibliography
+    \printbibliography % #bibliography
+
+    % Glossary
+    \printglossary % #glossaries
+\end{document}
