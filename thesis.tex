@@ -1,0 +1,133 @@
+%------------------------------------------------------------------------------%
+% This is the root document. Compile this document with
+%   $ pdflatex thesis
+% to generate a PDF file.
+% To compile your glossaries and acronyms, run:
+%   $ makeglossaries thesis
+% To compile your bibliography, run:
+%   % biber thesis
+%
+% Make sure that you have all neccessary latex packages installed.
+% To disable some functionality, just comment it out.
+%
+% It is highly recommended to put your stuff in a separate `content/` folder
+% like the `docs/` folder shown.
+% Then replace the path from `docs/` to `content/` - thats it.
+%------------------------------------------------------------------------------%
+
+% Define base module
+% This module define all basic utils that are provided by this template.
+% It's not recommended to comment this out.
+%
+% To enable/disable modules use the file `settings/modules.tex` file.
+\input{modules/base}
+
+%------------------------------------------------------------------------------%
+% BIBLIOGRAPHY
+%------------------------------------------------------------------------------%
+% Add your bibliography files here...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addbibresource{docs/bibliography.bib} % #bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%------------------------------------------------------------------------------%
+% GLOSSARIES
+%------------------------------------------------------------------------------%
+% Add your glossaries and acronyms here...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{docs/glossaries.tex} % #glossaries
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%------------------------------------------------------------------------------%
+% DOCUMENT
+%------------------------------------------------------------------------------%
+\begin{document}
+    % Site counter (recommended)
+    \newcounter{savepage}
+
+    % Cover
+    \input{modules/cover}
+
+    %--------------------------------------------------------------------------%
+    % Set site style to roman numbering
+    \pagenumbering{roman}
+    %--------------------------------------------------------------------------%
+
+    % Restriction
+    % Automatically disabled, if you set `\restrictedDocument` to `no`
+    \IfStrEq{\restrictDocument}{yes}{%
+        \input{modules/restriction_notice}
+        \newpage
+    }{}%
+
+    % Declaration of honor
+    \input{modules/declaration}
+    \newpage
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Abstract
+    \input{docs/abstract} % #abstract
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    % Don't show header in indices
+    \pagestyle{plain}
+
+    %--------------------------------------------------------------------------%
+    % INDICES
+    %--------------------------------------------------------------------------%
+    \tableofcontents
+    
+    % Acronyms
+    \printglossary[title=\sAcronymPhrase, type=\acronymtype] % #glossaries
+
+    \listoffigures
+    \listoftables
+    \lstlistoflistings % #listings
+
+    % Set site style to arabic numbering
+    \cleardoublepage
+    \setcounter{savepage}{\arabic{page}}
+    \pagenumbering{arabic}
+
+    % Enable header
+    \pagestyle{headings}
+
+    %--------------------------------------------------------------------------%
+    % CONTENT
+    %--------------------------------------------------------------------------%
+    \input{settings/content}
+
+    % Change site style to roman numbering
+    \cleardoublepage
+    \pagenumbering{roman}
+    \setcounter{page}{\thesavepage}
+
+    %--------------------------------------------------------------------------%
+    % BIBLIOGRAPHY
+    %--------------------------------------------------------------------------%
+    \printbibliography % #bibliography
+
+    %--------------------------------------------------------------------------%
+    % GLOSSARY
+    %--------------------------------------------------------------------------%
+    \printglossary % #glossaries
+
+    %--------------------------------------------------------------------------%
+    % APPENDIX
+    %--------------------------------------------------------------------------%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Change the appendix file here.
+    \newcommand{\setAppendixFile}{docs/appendix} % #appendix
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \IfFileExists{\setAppendixFile}{%
+        \appendix
+        \addpart{\sAppendixPhrase}
+
+        \input{\setAppendixFile} % #appendix
+    }{}
+    
+    % Site for cd if electronic version is enabled.
+    \IfStrEq{\hasElectronicVersion}{yes}{%
+        \input{modules/data_carrier.tex}%
+    }{}%
+\end{document}
