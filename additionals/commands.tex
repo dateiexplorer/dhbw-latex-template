@@ -1,0 +1,25 @@
+%!TEX root = ../thesis.tex
+
+%------------------------------------------------------------------------------%
+% COMMANDS
+%------------------------------------------------------------------------------%
+
+% Check document type.
+\newcommand{\IfDocType}[3]{%
+    \IfStrEq{\setDocumentType}{#1}{#2}{#3}%
+}%
+
+% Check if string is empty.
+\newcommand{\IfStrIsEmpty}[3]{%
+    \IfStrEq{#1}{}{#2}{#3}%
+}%
+
+% Write text in code style.
+\newcommand{\code}[1]{%
+    \texttt{#1}%
+}%
+
+% Add source to figures.
+\newcommand{\source}[1]{%
+    \footnotesize{Quelle: #1}%
+}%

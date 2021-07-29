@@ -1,8 +1,11 @@
 %!TEX root = ../thesis.tex
 
 %------------------------------------------------------------------------------%
-% BIBLIOGRAPHY
+% APPENDIX
 %------------------------------------------------------------------------------%
-% Options:
-%  * `sorting=none` sorting bibliography in citation order.
-\usepackage[backend=biber,sorting=none]{biblatex}
+% Define some util packages for appendix
+
+% Availability to include pdf documents in the appendix
+\usepackage{pdfpages}
+
+\includepdfset{pagecommand={\thispagestyle{headings}}}

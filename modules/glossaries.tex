@@ -1,28 +1,14 @@
-%!TEX root = ../document.tex
+%!TEX root = ../thesis.tex
 
-%-START-GLOSSARIES-------------------------------------------------------------%
-% Glossaries
+%------------------------------------------------------------------------------%
+% GLOSSARIES
+%------------------------------------------------------------------------------%
 % Make glossaries and acronyms
-\usepackage[acronym, nonumberlist, toc, nopostdot]{glossaries}
+%
+% Options:
+%  * Remove `nogroupskip` to get vertical space between each section
+%  * Change `style` between `super` and `superborder` to show outlines in the
+%    glossaries
+\usepackage[acronym, nonumberlist, toc, nopostdot, nogroupskip]{glossaries}
 
 \makeglossaries
-%-END-GLOSSARIES---------------------------------------------------------------%
-
-%------------------------------------------------------------------------------%
-% Defining new acronyms
-% \newacronym{IDENTIFIER}{ABBREVIATION}{DESCRIPTION}
-\newacronym{dhbw}{DHBW}{Duale Hochschule Baden Württemberg}
-%------------------------------------------------------------------------------%
-
-%------------------------------------------------------------------------------%
-% Defining new glossary entries
-% \newglossaryentry{IDENTIFIER}{name=NAME, description=DESCRIPTION}
-\newglossaryentry{mit-lizenz}{
-    name=MIT-Lizenz,
-    description={
-        Die MIT-Lizenz ist eine permissive Open-Source-Lizenz, die es erlaubt,
-        dieses Projekt zu verteilen, zu verändern und vieles mehr. Die volle
-        Lizenz ist im Root-Verzeichnis dieses Projekts zu finden.
-    }
-}
-%------------------------------------------------------------------------------%

@@ -1,10 +1,10 @@
 % Document type
 \newcommand{\sDocumentTypePhrase}{%
     \IfStrEqCase{\setDocumentType}{%
-        {T2/1000}{Projektarbeit}%
-        {T2/2000}{Projektarbeit}%
-        {T2/3100}{Studienarbeit}%
-        {T2/3300}{Bachelorarbeit}%
+        {T3/1000}{Projektarbeit}%
+        {T3/2000}{Projektarbeit}%
+        {T3/3100}{Studienarbeit}%
+        {T3/3300}{Bachelorarbeit}%
     }[\setDocumentType]
 }
 
@@ -21,10 +21,10 @@
 \newcommand{\sCompanyPhrase}{Ausbildungsbetrieb}
 \newcommand{\sTutorPhrase}{%
     \IfStrEqCase{\setDocumentType}{%
-        {T2/1000}{Betreuer der Firma}%
-        {T2/2000}{Gutachter}%
-        {T2/3100}{Gutachter}%
-        {T2/3300}{Erstgutachter}%
+        {T3/1000}{Betreuer der Firma}%
+        {T3/2000}{Gutachter}%
+        {T3/3100}{Gutachter}%
+        {T3/3300}{Erstgutachter}%
     }[Gutachter]
 }
 \newcommand{\sEvaluatorPhrase}{Zweitgutachter}
@@ -33,3 +33,4 @@
 \newcommand{\sRestrictionNoticePhrase}{Sperrvermerk}
 \newcommand{\sAcronymPhrase}{Abkürzungsverzeichnis}
 \newcommand{\sDeclarationPhrase}{Ehrenwörtliche Erklärung}
+\newcommand{\sAppendixPhrase}{Anhang}

@@ -13,5 +13,11 @@
 *.lof
 *.log
 *.lot
+*.lol
 *.run.xml
 *.toc
+*.synctex*
+*.fdb*
+*.fls
+*.glsdefs
+*.out

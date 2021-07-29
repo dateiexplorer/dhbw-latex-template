@@ -1,19 +1,38 @@
-%!TEX root = ../document.tex
+%!TEX root = ../thesis.tex
 
+%------------------------------------------------------------------------------%
+% COVER
+%------------------------------------------------------------------------------%
+% This is a template for your titlepage.
+% It is recommended to not change anything. In some cases the attribute of the
+% company-logo must be adjusted. See the block below.
+% In the `settings/metadata.tex` file you can manage which information are
+% shown.
 \begin{titlepage}
 
     % Show logos at the top of the document.
-    \begin{minipage}{\textwidth}
-        \centering
-        
-        % DHBW logo
-        \includegraphics[height=2.5cm]{res/logos/dhbw.png}
-        % Company logo
-        \IfStrEq{\showCompanyLogo}{yes}{%
-            \hfill
-            \includegraphics[height=2.5cm]{res/logos/company.png}
-        }{}%
-    \end{minipage}
+    \begin{center}
+        \begin{minipage}{0.9\textwidth}
+            \centering
+            
+            % Company logo
+            \IfStrEq{\showCompanyLogo}{yes}{%
+                \raisebox{-0.5\height}%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    % Change the `width` attribute to adjust it to your 
+                    % purposes. You can also use the `hight` attribute instead.
+                    %                [width=<value>
+                    %                [height=<value>
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    {\includegraphics[width=0.2\textwidth]%
+                    {res/logos/company.png}}
+                \hfill
+            }{}%
+            % DHBW logo
+            \raisebox{-0.5\height}{\includegraphics[width=0.3\textwidth]%
+                {res/logos/dhbw.png}}
+        \end{minipage}
+    \end{center}
 
     % Some space between the header and the content.
     \vspace{5mm}
@@ -27,14 +46,14 @@
         \vspace*{8mm}{\large\textbf{\sDocumentTypePhrase}}\\
 
         % Show degree if document is a bachelor thesis.
-        \IfDocType{T2/3300}{%
+        \IfDocType{T3/3300}{%
             \vspace*{6mm}{\sDegreePhrase}\\
             \vspace*{0mm}{\textbf{\setDegree}}\\
         }
 
         % Show lecture phrase only if set and not a bachelor thesis.
         \IfStrIsEmpty{\setLecture}{}{% else
-            \IfDocType{T2/3300}{}{% else
+            \IfDocType{T3/3300}{}{% else
                 \vspace*{6mm}{\sLecturePhrase}\\
                 \vspace*{0mm}{\textbf{\setLecture}}\\
             }%
@@ -64,16 +83,18 @@
     \begin{center}
         \begin{tabular}{ll}
             \textbf{\sDocumentPeriodPhrase} & \setDocumentPeriod\\
-            \textbf{\sMatriculationNumberPhrase, \sCoursePhrase} & \setMatriculationNumber, \setCourse\\
+            \textbf{\sMatriculationNumberPhrase, \sCoursePhrase} & %
+                \setMatriculationNumber, \setCourse\\
             % Show company information only if set
             \IfStrIsEmpty{\sCompanyPhrase}{}{% else
                 \IfStrIsEmpty{\setCompanyLocation}{}{% else 
-                    \textbf{\sCompanyPhrase} & \setCompanyName, \setCompanyLocation\\
+                    \textbf{\sCompanyPhrase} & \setCompanyName, %
+                        \setCompanyLocation\\
                 }%
             }%
             \textbf{\sTutorPhrase} & \setTutor\\
             % Show evaluator if bachelor thesis is set.
-            \IfDocType{T2/3300}{%
+            \IfDocType{T3/3300}{%
                 \textbf{\sEvaluatorPhrase} & \setEvaluator
             }{}%
         \end{tabular}

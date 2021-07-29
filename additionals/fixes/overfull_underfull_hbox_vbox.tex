@@ -1,0 +1,18 @@
+%!TEX root = ../../thesis.tex
+
+%------------------------------------------------------------------------------%
+% This fix uses the microtype package to enable better typography and decrease
+% `Overfull` and `Underfull` information output from latex.
+%
+% If using a bibliography with the biblatex package, the url handling of xurl
+% is borken. To solve this issue, load the xurl package after the biblatex
+% package.
+% https://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url
+%------------------------------------------------------------------------------%
+
+% Enable better typograhpie to decrease `Overfull` and `Underfull` informations.
+\usepackage[activate]{microtype}
+
+% Load this package after `biblatex` to solve url linebreaking in the
+% bibliography.
+\usepackage{xurl}
