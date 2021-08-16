@@ -16,7 +16,7 @@
             \centering
             
             % Company logo
-            \IfStrEq{\showCompanyLogo}{yes}{%
+            \IfStrEq{\companyLogo}{yes}{%
                 \raisebox{-0.5\height}%
                     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     % Change the `width` attribute to adjust it to your 
@@ -40,7 +40,7 @@
     % Title and general information
     \begin{center}
         \doublespacing{%
-            \vspace*{5mm}{\LARGE\textbf{\setDocumentTitle}}
+            \vspace*{5mm}{\LARGE\textbf{\documentTitle}}
         }%
 
         \vspace*{8mm}{\large\textbf{\sDocumentTypePhrase}}\\
@@ -48,30 +48,30 @@
         % Show degree if document is a bachelor thesis.
         \IfDocType{T3/3300}{%
             \vspace*{6mm}{\sDegreePhrase}\\
-            \vspace*{0mm}{\textbf{\setDegree}}\\
+            \vspace*{0mm}{\textbf{\degree}}\\
         }
 
         % Show lecture phrase only if set and not a bachelor thesis.
-        \IfStrIsEmpty{\setLecture}{}{% else
+        \IfStrIsEmpty{\lecture}{}{% else
             \IfDocType{T3/3300}{}{% else
                 \vspace*{6mm}{\sLecturePhrase}\\
-                \vspace*{0mm}{\textbf{\setLecture}}\\
+                \vspace*{0mm}{\textbf{\lecture}}\\
             }%
         }%
 
-        \vspace*{8mm}{\sDepartmentPhrase{} \setDepartment}\\
-        \vspace*{0mm}{\sLocationUniversityPhrase{} \setLocationUniversity}\\
+        \vspace*{8mm}{\sDepartmentPhrase{} \department}\\
+        \vspace*{0mm}{\sLocationUniversityPhrase{} \locationUniversity}\\
         \vspace*{10mm}{\sDocumentAuthorPhrase}\\
-        \vspace*{0mm}{\large \textbf{\setDocumentAuthor}}\\
+        \vspace*{0mm}{\large \textbf{\documentAuthor}}\\
         
         \vfill
 
-        \vspace*{0mm}{\setReleaseDate}\\
+        \vspace*{0mm}{\releaseDate}\\
 
         \vfill
 
         % Show restriction notice if set
-        \IfStrEq{\restrictDocument}{yes}{%
+        \IfStrEq{\restricted}{yes}{%
             \vspace*{12mm}{\large\textbf{\sRestrictionNoticePhrase}}\\
         }{}%
     \end{center}
@@ -82,20 +82,20 @@
     % Additional information about the author, company and DH.
     \begin{center}
         \begin{tabular}{ll}
-            \textbf{\sDocumentPeriodPhrase} & \setDocumentPeriod\\
+            \textbf{\sDocumentPeriodPhrase} & \documentPeriod\\
             \textbf{\sMatriculationNumberPhrase, \sCoursePhrase} & %
-                \setMatriculationNumber, \setCourse\\
+                \matriculationNumber, \course\\
             % Show company information only if set
             \IfStrIsEmpty{\sCompanyPhrase}{}{% else
-                \IfStrIsEmpty{\setCompanyLocation}{}{% else 
-                    \textbf{\sCompanyPhrase} & \setCompanyName, %
-                        \setCompanyLocation\\
+                \IfStrIsEmpty{\companyLocation}{}{% else 
+                    \textbf{\sCompanyPhrase} & \companyName, %
+                        \companyLocation\\
                 }%
             }%
-            \textbf{\sTutorPhrase} & \setTutor\\
+            \textbf{\sTutorPhrase} & \tutor\\
             % Show evaluator if bachelor thesis is set.
             \IfDocType{T3/3300}{%
-                \textbf{\sEvaluatorPhrase} & \setEvaluator
+                \textbf{\sEvaluatorPhrase} & \evaluator
             }{}%
         \end{tabular}
     \end{center}

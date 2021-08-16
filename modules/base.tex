@@ -29,11 +29,6 @@
 ]{scrreprt}
 
 %------------------------------------------------------------------------------%
-% SETTINGS
-%------------------------------------------------------------------------------%
-\input{settings/metadata}
-
-%------------------------------------------------------------------------------%
 % ENCODING
 %------------------------------------------------------------------------------%
 % Support other language encodings, e.g. 'ä', 'ö', 'ü'. Include this packages 
@@ -83,23 +78,29 @@
 % unexpected issues.
 \usepackage{pdfpages}
 
-\usepackage[
-    pdftitle={\setDocumentTitle},
-    pdfauthor={\setDocumentAuthor},
-    pdfsubject={\setDocumentType},
-    pdfcreator={pdflatex, LaTeX with KOMA-Script},
-    pdfpagemode=UseOutlines,
-    pdfdisplaydoctitle=true,
-    pdflang={\setDocumentLanguage},
-    hidelinks
-]{hyperref}
-
-\usepackage{bookmark}
-
 %------------------------------------------------------------------------------%
 % COMMANDS
 %------------------------------------------------------------------------------%
 \input{additionals/commands}
+
+%------------------------------------------------------------------------------%
+% SETTINGS
+%------------------------------------------------------------------------------%
+\input{settings/metadata}
+
+
+\usepackage[
+    pdftitle={\documentTitle},
+    pdfauthor={\documentAuthor},
+    pdfsubject={\documentType},
+    pdfcreator={pdflatex, LaTeX with KOMA-Script},
+    pdfpagemode=UseOutlines,
+    pdfdisplaydoctitle=true,
+    pdflang={\documentLanguage},
+    hidelinks
+]{hyperref}
+
+\usepackage{bookmark}
 
 %------------------------------------------------------------------------------%
 % MODULES
@@ -115,7 +116,7 @@
 % LANGUAGE
 %------------------------------------------------------------------------------%
 % Load the language file, if not exists, load default.
-\edef\BaseFile{res/i18n/\setDocumentLanguage/base}%
+\edef\BaseFile{res/i18n/\documentLanguage/base}%
 \input{\BaseFile}
 
 %------------------------------------------------------------------------------%

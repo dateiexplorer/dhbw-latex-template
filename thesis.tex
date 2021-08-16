@@ -55,7 +55,7 @@
 
     % Restriction
     % Automatically disabled, if you set `\restrictedDocument` to `no`
-    \IfStrEq{\restrictDocument}{yes}{%
+    \IfStrEq{\restricted}{yes}{%
         \input{modules/restriction_notice}
         \newpage
     }{}%
@@ -78,7 +78,10 @@
     \tableofcontents
     
     % Acronyms
-    \printglossary[title=\sAcronymPhrase, type=\acronymtype] % #glossaries
+    \addchap{\sAcronymPhrase} % #acronyms
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \input{docs/acronyms} % #acronyms
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \listoffigures
     \listoftables
@@ -127,7 +130,7 @@
     }{}
     
     % Site for cd if electronic version is enabled.
-    \IfStrEq{\hasElectronicVersion}{yes}{%
+    \IfStrEq{\electronicVersion}{yes}{%
         \input{modules/data_carrier.tex}%
     }{}%
 \end{document}
