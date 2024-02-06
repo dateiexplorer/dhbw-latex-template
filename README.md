@@ -12,7 +12,7 @@ This is an unofficial LaTeX template for DHBW thesises. Keep it in mind!
 To use this template clone the project folder with the following command:
 
 ```sh
-git clone git@github.com:dateiexplorer/dhbw-latex-template
+git clone git@github.com:dateiexplorer/dhbw-latex-template.git
 ```
 
 or download and extract the zip folder for a specific release package.
@@ -24,7 +24,7 @@ pdflatex thesis
 ```
 
 You need a working LaTeX installation to compile PDF files from this template.
-If you get error messages, make sure you've installed all neccessary latex
+If you get error messages, make sure you've installed all necessary latex
 packages.
 If you use MiKTeX or Tex Live the packages should be downloaded automatically.
 Make sure that you have a internet connection and (optionally) that you applied
