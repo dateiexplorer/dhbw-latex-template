@@ -5,4 +5,19 @@
 %-----------------------------------------------------------------------------%
 % Options:
 %  * `sorting=none` sorting bibliography in citation order.
-\usepackage[backend=biber,sorting=none]{biblatex}
+
+\IfStrEq{\quoteStyle}{harvard}{%
+    % Harvard citation style, use \parencite[page info]{key} or
+    % \textcite[page info]{key}
+    \usepackage[
+        backend=biber,
+        sortlocale=\languageLongId,
+        style={authoryear-ibid},
+    ]{biblatex}
+}{% else
+    % Default citation style
+    \usepackage[
+        backend=biber,
+        sorting=none
+    ]{biblatex}
+}%

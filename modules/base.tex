@@ -75,7 +75,7 @@
 % It is recommended to use this package, so it is in the base module.
 \usepackage[doublespacing]{setspace}
 
-% Use \cite for citations.
+% Use \cite, \parencite, for citations.
 \usepackage{csquotes}
 
 % The next three packages are useful to enable hyperrefs and bookmarking for pdf
@@ -97,6 +97,13 @@
 %-----------------------------------------------------------------------------%
 \input{settings/metadata}
 
+%-----------------------------------------------------------------------------%
+% LANGUAGE
+%-----------------------------------------------------------------------------%
+% Load the language file, if not exists, load default.
+\edef\BaseFile{res/i18n/\documentLanguage/base}%
+\input{\BaseFile}
+
 \usepackage[
     pdftitle={\documentTitle},
     pdfauthor={\documentAuthor},
@@ -104,7 +111,7 @@
     pdfcreator={pdflatex, LaTeX with KOMA-Script},
     pdfpagemode=UseOutlines,
     pdfdisplaydoctitle=true,
-    pdflang={\documentLanguage},
+    pdflang={\languageShortId},
     hidelinks
 ]{hyperref}
 
@@ -119,13 +126,6 @@
 % The default beheviour is to load all recommended packages. If you don't want
 % or need some packages, comment it out in the modules file shown below.
 \input{settings/modules}
-
-%-----------------------------------------------------------------------------%
-% LANGUAGE
-%-----------------------------------------------------------------------------%
-% Load the language file, if not exists, load default.
-\edef\BaseFile{res/i18n/\documentLanguage/base}%
-\input{\BaseFile}
 
 %-----------------------------------------------------------------------------%
 % FIXES
