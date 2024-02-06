@@ -4,9 +4,71 @@
 % COMMANDS
 %------------------------------------------------------------------------------%
 
+% Document language
+\newcommand{\setDocumentLanguage}[1]{\def\documentLanguage{#1}}
+
+% Document type
+\newcommand{\setDocumentType}[1]{\def\documentType{#1}}
+
+% Title
+\newcommand{\setDocumentTitle}[1]{\def\documentTitle{#1}}
+
+% Author
+\newcommand{\setDocumentAuthor}[1]{\def\documentAuthor{#1}}
+
+% Matriculation number
+\newcommand{\setMatriculationNumber}[1]{\def\matriculationNumber{#1}}
+
+% Course name
+\newcommand{\setCourse}[1]{\def\course{#1}}
+
+% Location of the university
+\newcommand{\setLocationUniversity}[1]{\def\locationUniversity{#1}}
+
+% Release date
+\newcommand{\setReleaseDate}[1]{\def\releaseDate{#1}}
+
+% Release location
+\newcommand{\setReleaseLocation}[1]{\def\releaseLocation{#1}}
+
+% Period
+\newcommand{\setDocumentPeriod}[1]{\def\documentPeriod{#1}}
+
+% Department
+\newcommand{\setDepartment}[1]{\def\department{#1}}
+
+% Lecture
+\newcommand{\setLecture}[1]{\def\lecture{#1}}
+
+% Degree
+\newcommand{\setDegree}[1]{\def\degree{#1}}
+
+% Name of the tutor
+\newcommand{\setTutor}[1]{\def\tutor{#1}}
+
+% Name of the evaluator
+\newcommand{\setEvaluator}[1]{\def\evaluator{#1}}
+
+% Company name
+\newcommand{\setCompanyName}[1]{\def\companyName{#1}}
+
+% Company location
+\newcommand{\setCompanyLocation}[1]{\def\companyLocation{#1}}
+
+% Restriction
+\newcommand{\restrictDocument}[1]{\def\restricted{#1}}
+
+% Electronic
+\newcommand{\hasElectronicVersion}[1]{\def\electronicVersion{#1}}
+
+% Company logo
+\newcommand{\showCompanyLogo}[1]{\def\companyLogo{#1}}
+
+%------------------------------------------------------------------------------%
+
 % Check document type.
 \newcommand{\IfDocType}[3]{%
-    \IfStrEq{\setDocumentType}{#1}{#2}{#3}%
+    \IfStrEq{\documentType}{#1}{#2}{#3}%
 }%
 
 % Check if string is empty.
