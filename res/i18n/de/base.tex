@@ -1,0 +1,35 @@
+% Document type
+\newcommand{\sDocumentTypePhrase}{%
+    \IfStrEqCase{\setDocumentType}{%
+        {T2/1000}{Projektarbeit}%
+        {T2/2000}{Projektarbeit}%
+        {T2/3100}{Studienarbeit}%
+        {T2/3300}{Bachelorarbeit}%
+    }[\setDocumentType]
+}
+
+% Cover phrases
+\newcommand{\sDegreePhrase}{für die Prüfung zum}
+\newcommand{\sLecturePhrase}{für die Vorlesung}
+\newcommand{\sDepartmentPhrase}{des Studiengangs}
+\newcommand{\sLocationUniversityPhrase}{an der Dualen Hochschule Baden-Württemberg}
+\newcommand{\sDocumentAuthorPhrase}{von}
+
+\newcommand{\sDocumentPeriodPhrase}{Bearbeitungszeitraum}
+\newcommand{\sMatriculationNumberPhrase}{Matrikelnummer}
+\newcommand{\sCoursePhrase}{Kurs}
+\newcommand{\sCompanyPhrase}{Ausbildungsbetrieb}
+\newcommand{\sTutorPhrase}{%
+    \IfStrEqCase{\setDocumentType}{%
+        {T2/1000}{Betreuer der Firma}%
+        {T2/2000}{Gutachter}%
+        {T2/3100}{Gutachter}%
+        {T2/3300}{Erstgutachter}%
+    }[Gutachter]
+}
+\newcommand{\sEvaluatorPhrase}{Zweitgutachter}
+
+% Headlines
+\newcommand{\sRestrictionNoticePhrase}{Sperrvermerk}
+\newcommand{\sAcronymPhrase}{Abkürzungsverzeichnis}
+\newcommand{\sDeclarationPhrase}{Ehrenwörtliche Erklärung}

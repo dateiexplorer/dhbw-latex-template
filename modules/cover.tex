@@ -1,0 +1,82 @@
+%!TEX root = ../document.tex
+
+\begin{titlepage}
+
+    % Show logos at the top of the document.
+    \begin{minipage}{\textwidth}
+        \centering
+        
+        % DHBW logo
+        \includegraphics[height=2.5cm]{res/logos/dhbw.png}
+        % Company logo
+        \IfStrEq{\showCompanyLogo}{yes}{%
+            \hfill
+            \includegraphics[height=2.5cm]{res/logos/company.png}
+        }{}%
+    \end{minipage}
+
+    % Some space between the header and the content.
+    \vspace{5mm}
+
+    % Title and general information
+    \begin{center}
+        \doublespacing{%
+            \vspace*{5mm}{\LARGE\textbf{\setDocumentTitle}}
+        }%
+
+        \vspace*{8mm}{\large\textbf{\sDocumentTypePhrase}}\\
+
+        % Show degree if document is a bachelor thesis.
+        \IfDocType{T2/3300}{%
+            \vspace*{6mm}{\sDegreePhrase}\\
+            \vspace*{0mm}{\textbf{\setDegree}}\\
+        }
+
+        % Show lecture phrase only if set and not a bachelor thesis.
+        \IfStrIsEmpty{\setLecture}{}{% else
+            \IfDocType{T2/3300}{}{% else
+                \vspace*{6mm}{\sLecturePhrase}\\
+                \vspace*{0mm}{\textbf{\setLecture}}\\
+            }%
+        }%
+
+        \vspace*{8mm}{\sDepartmentPhrase{} \setDepartment}\\
+        \vspace*{0mm}{\sLocationUniversityPhrase{} \setLocationUniversity}\\
+        \vspace*{10mm}{\sDocumentAuthorPhrase}\\
+        \vspace*{0mm}{\large \textbf{\setDocumentAuthor}}\\
+        
+        \vfill
+
+        \vspace*{0mm}{\setReleaseDate}\\
+
+        \vfill
+
+        % Show restriction notice if set
+        \IfStrEq{\restrictDocument}{yes}{%
+            \vspace*{12mm}{\large\textbf{\sRestrictionNoticePhrase}}\\
+        }{}%
+    \end{center}
+
+    % Fill empty space
+    \vfill
+
+    % Additional information about the author, company and DH.
+    \begin{center}
+        \begin{tabular}{ll}
+            \textbf{\sDocumentPeriodPhrase} & \setDocumentPeriod\\
+            \textbf{\sMatriculationNumberPhrase, \sCoursePhrase} & \setMatriculationNumber, \setCourse\\
+            % Show company information only if set
+            \IfStrIsEmpty{\sCompanyPhrase}{}{% else
+                \IfStrIsEmpty{\setCompanyLocation}{}{% else 
+                    \textbf{\sCompanyPhrase} & \setCompanyName, \setCompanyLocation\\
+                }%
+            }%
+            \textbf{\sTutorPhrase} & \setTutor\\
+            % Show evaluator if bachelor thesis is set.
+            \IfDocType{T2/3300}{%
+                \textbf{\sEvaluatorPhrase} & \setEvaluator
+            }{}%
+        \end{tabular}
+    \end{center}
+
+\end{titlepage}
