@@ -1,8 +1,8 @@
 %!TEX root = ../thesis.tex
 
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % DOCUMENT
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \documentclass[
     pdftex,
     % Print only one side of a paper, alternate: twoside
@@ -15,7 +15,7 @@
     listof=totoc,
     bibliography=totoc,
     % Change the header and footer height
-    headheight=20pt,
+    headheight=26pt,
     footheight=16pt,
     %
     headinclude=false,
@@ -25,26 +25,21 @@
     % Some modifications for the pdf document
     % Needed the `geometry` package loaded and margin set to work correctly.
     DIV=calc,
-    BCOR=8mm
+    BCOR=8mm,
+    appendixprefix
 ]{scrreprt}
 
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % ENCODING
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % Support other language encodings, e.g. 'ä', 'ö', 'ü'. Include this packages 
 % in every latex document.
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % PACKAGES
-%------------------------------------------------------------------------------%
-
-% Load latex3 package to use advanced programming syntax.
-% As described in https://www.alanshawn.com/latex3-tutorial/ new distribution
-% (later than 2020-02-02 release) doesn't need this package explicitly.
-% However to ensure backwards compatiblity this package is included.
-\usepackage{expl3}
+%-----------------------------------------------------------------------------%
 
 % Use the following babel packages, set last as default.
 % Add other languages if necessary.
@@ -78,7 +73,7 @@
 
 % Enables doublespacing. This improves the layout for the cover a lot.
 % It is recommended to use this package, so it is in the base module.
-\usepackage[onehalfspacing]{setspace}
+\usepackage[doublespacing]{setspace}
 
 % Use \cite for citations.
 \usepackage{csquotes}
@@ -92,14 +87,14 @@
 % Commands for if statements.
 \usepackage{ifthen}
 
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % COMMANDS
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \input{additionals/commands}
 
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % SETTINGS
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 \input{settings/metadata}
 
 \usepackage[
@@ -115,9 +110,9 @@
 
 \usepackage{bookmark}
 
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % MODULES
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % The modules are loaded exactly here. This is necessary because some packages
 % need other packages and some must be load bevor load others (look at the
 % fixes) to work correctly.
@@ -125,16 +120,16 @@
 % or need some packages, comment it out in the modules file shown below.
 \input{settings/modules}
 
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % LANGUAGE
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % Load the language file, if not exists, load default.
 \edef\BaseFile{res/i18n/\documentLanguage/base}%
 \input{\BaseFile}
 
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % FIXES
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % By default this template enables all fixes to improve the compiled result.
 % However, if you have any problems or don't want the beheviour, just comment
 % out the fix with a `%` sign.

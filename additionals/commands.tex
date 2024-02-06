@@ -1,8 +1,8 @@
 %!TEX root = ../thesis.tex
 
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 % COMMANDS
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 % Document language
 \newcommand{\setDocumentLanguage}[1]{\def\documentLanguage{#1}}
@@ -70,7 +70,7 @@
 % Point out code
 \newcommand{\setEmphraseCode}[1]{\def\emphraseCode{#1}}
 
-%------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
 
 % Check document type.
 \newcommand{\IfDocType}[3]{%
@@ -90,3 +90,26 @@
         \texttt{#1}%
     }
 }%
+
+%-----------------------------------------------------------------------------%
+
+% Generate appendix table of contents
+% Working solution without extra packages (KOMA) from:
+% https://tex.stackexchange.com/questions/260445/separate-table-of-contents-for-appendix
+\DeclareNewTOC[%
+    owner=\jobname,
+    listname={\appendixname}, % title of the appendix toc
+]{atoc}
+
+\makeatletter
+\newcommand*\appendixwithtoc{%
+    \cleardoublepage%
+    \appendix%
+    \addcontentsline{toc}{chapter}{\appendixname}%
+    \renewcommand*{\ext@toc}{atoc}%
+    \scr@ifundefinedorrelax{hypersetup}{}{\hypersetup{bookmarkstype=atoc}}%
+    \listofatocs
+}
+\makeatother
+
+%-----------------------------------------------------------------------------%

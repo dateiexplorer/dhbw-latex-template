@@ -21,6 +21,10 @@
 *.fls
 *.glsdefs
 *.out
+*.atoc
+*.maf
+*.mtc
+*.mtc0
 
 # VS Code files
 .vscode/
