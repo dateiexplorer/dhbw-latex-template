@@ -1,64 +1,130 @@
-%!TEX root = ../document.tex
+%!TEX root = ../thesis.tex
 
+%------------------------------------------------------------------------------%
+% DOCUMENT
+%------------------------------------------------------------------------------%
 \documentclass[
+    pdftex,
     % Print only one side of a paper, alternate: twoside
     oneside,
     % Font size (recommended by DHBW)
     12pt,
-    % 
+    % Don't indent space for each paragraph
     parskip=half,
     % Needed to add indices to tableofcontents
-    liststotoc
+    listof=totoc,
+    bibliography=totoc,
+    % Change the header and footer height
+    headheight=20pt,
+    footheight=16pt,
+    %
+    headinclude=false,
+    footinclude=false,
+    % Add a seperation line for the header
+    headsepline,
+    % Some modifications for the pdf document
+    % Needed the `geometry` package loaded and margin set to work correctly.
+    DIV=calc,
+    BCOR=8mm
 ]{scrreprt}
 
+%------------------------------------------------------------------------------%
+% SETTINGS
+%------------------------------------------------------------------------------%
+\input{settings/metadata}
 
-%-START-ENCODING---------------------------------------------------------------%
+%------------------------------------------------------------------------------%
+% ENCODING
+%------------------------------------------------------------------------------%
 % Support other language encodings, e.g. 'ä', 'ö', 'ü'. Include this packages 
 % in every latex document.
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-%-END-ENCODING-----------------------------------------------------------------%
 
+%------------------------------------------------------------------------------%
+% PACKAGES
+%------------------------------------------------------------------------------%
 
 % Use the following babel packages, set last as default.
+% Add other languages if necessary.
 \usepackage[english, ngerman]{babel}
 
 % Use prettier font.
 % Other fonts: palatino, goudysans, lmodern, libertine
 \usepackage{lmodern}
 
+% Change the default margin of the document. You can change the values for your
+% beheviour
+\usepackage[foot=1.0cm, margin=2.5cm]{geometry}
+
 % Include figures.
 \usepackage{graphicx}
+
+% Needed to place images at code position
+\usepackage{float}
 
 % Use strings and make string operations, such as \IfStrEq available.
 \usepackage{xstring}
 
+% Enable `\rgb` command to define custom colors.
+% Needed by some modules, e.g. for listings.
+\usepackage{xcolor}
+
 % Enables doublespacing. This improves the layout for the cover a lot.
 % It is recommended to use this package, so it is in the base module.
-\usepackage{setspace}
+\usepackage[onehalfspacing]{setspace}
 
+% Use \cite for citations.
+\usepackage{csquotes}
 
-%-BEGIN-DEFINE-NEW-COMMANDS----------------------------------------------------%
-% Check document type.
-\newcommand{\IfDocType}[3]{%
-    \IfStrEq{\setDocumentType}{#1}{#2}{#3}%
-}%
+% The next three packages are useful to enable hyperrefs and bookmarking for pdf
+% documents.
+% Don't delete any of these packages and don't rearrange them. This could cause
+% unexpected issues.
+\usepackage{pdfpages}
 
-% Check if string is empty.
-\newcommand{\IfStrIsEmpty}[3]{%
-    \IfStrEq{#1}{}{#2}{#3}%
-}%
-%-END-DEFINE-NEW-COMMANDS------------------------------------------------------%
+\usepackage[
+    pdftitle={\setDocumentTitle},
+    pdfauthor={\setDocumentAuthor},
+    pdfsubject={\setDocumentType},
+    pdfcreator={pdflatex, LaTeX with KOMA-Script},
+    pdfpagemode=UseOutlines,
+    pdfdisplaydoctitle=true,
+    pdflang={\setDocumentLanguage}
+]{hyperref}
 
+\usepackage{bookmark}
 
-%-BEGIN-FIXES------------------------------------------------------------------%
-% Fix: Pin chapter headings at top of page.
-\renewcommand*\chapterheadstartvskip{}
+%------------------------------------------------------------------------------%
+% COMMANDS
+%------------------------------------------------------------------------------%
+\input{additionals/commands}
 
-\clubpenalty=10000
-\widowpenalty=10000
-%-END-FIXES--------------------------------------------------------------------%
+%------------------------------------------------------------------------------%
+% MODULES
+%------------------------------------------------------------------------------%
+% The modules are loaded exactly here. This is necessary because some packages
+% need other packages and some must be load bevor load others (look at the
+% fixes) to work correctly.
+% The default beheviour is to load all recommended packages. If you don't want
+% or need some packages, comment it out in the modules file shown below.
+\input{settings/modules}
 
+%------------------------------------------------------------------------------%
+% FIXES
+%------------------------------------------------------------------------------%
+% By default this template enables all fixes to improve the compiled result.
+% However, if you have any problems or don't want the beheviour, just comment
+% out the fix with a `%` sign.
+% It is recommended to enable all fixes for the best results.
+\input{additionals/fixes/improve_layout.tex}
+\input{additionals/fixes/supress_warning_for_koma_deprecations.tex}
+\input{additionals/fixes/overfull_underfull_hbox_vbox.tex}
+
+%------------------------------------------------------------------------------%
+% LANGUAGE
+%------------------------------------------------------------------------------%
 % Load the language file, if not exists, load default.
 \edef\BaseFile{res/i18n/\setDocumentLanguage/base}%
 \input{\BaseFile}
+

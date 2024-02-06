@@ -1,0 +1,77 @@
+%!TEX root = ../../thesis.tex
+
+\chapter{Basics}
+
+In diesem Kapitel werden nun die grundlegenden \LaTeX{}-Funktionen vorgestellt.
+Es wird empfohlen, einzelne Textbausteine in den Quelldateien nachzulesen, da
+dort einige weitere Informationen zu finden sind.
+
+\section{Kompilieren einer \LaTeX{}-Datei}
+
+Zunächst ist wichtig zu verstehen, dass es sich bei den \emph{.tex} Dateien um
+ganz normale Textdateien handelt, die mit einem herkömlichen Texteditor
+einsehen und bearbeiten lassen. Damit ist \LaTeX{} unabhängig von irgendeiner
+zusätzlichen Software. Dateien können auch komplett im Terminal mit Texteditoren
+wie \emph{nano} oder \emph{vim} unter Linux entwickelt werden.
+Diese Textdateien werden anschließend mit einem Programm kompiliert, um daraus
+eine PDF-Datei zu erzeugen.
+
+\section{Texte schreiben}
+
+In einer TEX-Datei kann schließlich ganz normaler Text geschrieben werden. Dabei
+werden Zeichenumbrüche ignoriert. Das schöne ist, dass \LaTeX{} sich um das
+Layout und das Setzen des Textes kümmert. Das heißt, es ist egal, wie unsere
+Quelldatei letztlich formatiert ist, am Ende erhält man immer ein Ergebnis, das
+nach typographischen Regeln gut aussehen wird.
+
+Mit verschiedenen Commands können Texte auch angepasst werden, dabei wird
+mit den Commands immer eine semantische Bedeutung gegeben. Das Command
+\code{\textbackslash{}emph} weist \LaTeX{} beispielsweise dazu an, einen Text
+hervorzuheben. Standardmäßig wird das durch das kursive Setzen des
+entsprechenden Textes bewerkstelligt.
+
+Mit einer leeren Zeile wird \LaTeX{} mitgeteile, dass nun ein neuer Absatz
+erfolgen soll. In dieser Vorlage ist standardmäßig eingestellt, dass ein neuer
+Absatz durch einen kleinen Zwischenraum abgetrennt wird. In der
+Standardeinstellung eines normalen \LaTeX{}-Dokuments, das nicht mit dieser
+Vorlage erstellt wird, wird der Absatz eingerückt (wie man es von Büchern her
+kennt). In wissenschaftlichen Arbeiten ist dieses Verhalten aber eher unüblich.
+Letztlich ist es aber Geschmackssache und jeder kann die Vorlage nach seinen
+Wünschen anpassen.
+
+\section{Aufzählungen}
+
+In \LaTeX{} können auch verschiedene Auflistungen gemacht werden. Diese
+Aufzählungen können nummeriert oder unnummeriert sein.
+
+Ungeordnete Liste:
+\begin{itemize}
+    \item Item 1
+    \item Item 2
+    \item Item 3
+\end{itemize}
+
+Geordnete Liste:
+\begin{enumerate}
+    \item Item 1
+    \begin{enumerate}
+        \item Item 1.1
+        \item Item 1.2
+        \item Item 1.3
+    \end{enumerate}
+    \item Item 2
+    \item Item 3
+\end{enumerate}
+
+Außerdem gibt es die Möglichkeit, eine Aufzählung von Worten und einer
+Beschreibung zu generieren.
+
+\begin{description}
+    \item[Item 1] \hfill \\
+        Beschreibung des ersten Items in der Liste. Diese Beschreibung kann auch
+        über mehrere Zeilen gehen.
+    \item[Item 2] \hfill \\
+        Beschreibung des zweiten Items...
+    \item[Item 3] \hfill \\
+        Beschreibung des dritten Items...
+\end{description}

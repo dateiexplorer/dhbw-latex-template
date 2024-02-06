@@ -18,7 +18,7 @@ git clone https://github.com/dateiexplorer/dhbw-latex-template
 Then you can compile the file with:
 
 ```sh
-pdflatex document
+pdflatex thesis
 ```
 
 You need a working LaTeX installation to compile PDF files from this template.
@@ -31,23 +31,24 @@ proxy settings.
 To compile your akronyms and glossary entries, run:
 
 ```sh
-makeglossaries document
+makeglossaries thesis
 ```
 
 To compile your biblography, run:
 
 ```sh
-biber document
+biber thesis
 ```
 
-Afterwards run ```pdflatex document``` to get a new PDF file.
+Afterwards run ```pdflatex thesis``` to get a new PDF file.
 
 ## Features of this templates
 
 * Small code base which provides modularity, extension and compile speed
 * Correct pagination with roman paging for indices and arabic paging for
   the main content
-* Simple usage of a glossary and akronyms
+* Simple usage of a glossary and acronyms
 * Biber for your bibliography
 * Detailed documentation of the code base with many examples how to use
   this template for your thesis
+* Many fixes for known issues to improve pdf generation
