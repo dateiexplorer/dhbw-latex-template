@@ -67,6 +67,9 @@
 % DHBW logo
 \newcommand{\showDHBWLogo}[1]{\def\dhbwLogo{#1}}
 
+% Point out code
+\newcommand{\setEmphraseCode}[1]{\def\emphraseCode{#1}}
+
 %------------------------------------------------------------------------------%
 
 % Check document type.
@@ -81,5 +84,9 @@
 
 % Write text in code style.
 \newcommand{\code}[1]{%
-    \texttt{#1}%
+    \IfStrEq{\emphraseCode}{yes}{%
+        \colorbox{background}{\texttt{#1}}%
+    }{% else
+        \texttt{#1}%
+    }
 }%
