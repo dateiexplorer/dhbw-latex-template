@@ -29,8 +29,17 @@
                 \hfill
             }{}%
             % DHBW logo
-            \raisebox{-0.5\height}{\includegraphics[width=0.3\textwidth]%
-                {res/logos/dhbw.png}}
+            \IfStrEq{\dhbwLogo}{yes}{%
+                \raisebox{-0.5\height}{%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    % Change the `width` attribute to adjust it to your 
+                    % purposes. You can also use the `hight` attribute instead.
+                    %                [width=<value>
+                    %                [height=<value>
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    \includegraphics[width=0.3\textwidth]%
+                    {res/logos/dhbw.png}}
+            }{}%
         \end{minipage}
     \end{center}
 
@@ -46,14 +55,14 @@
         \vspace*{8mm}{\large\textbf{\sDocumentTypePhrase}}\\
 
         % Show degree if document is a bachelor thesis.
-        \IfDocType{T3/3300}{%
+        \IfDocType{bachelor}{%
             \vspace*{6mm}{\sDegreePhrase}\\
             \vspace*{0mm}{\textbf{\degree}}\\
         }
 
         % Show lecture phrase only if set and not a bachelor thesis.
         \IfStrIsEmpty{\lecture}{}{% else
-            \IfDocType{T3/3300}{}{% else
+            \IfDocType{bachelor}{}{% else
                 \vspace*{6mm}{\sLecturePhrase}\\
                 \vspace*{0mm}{\textbf{\lecture}}\\
             }%
@@ -94,7 +103,7 @@
             }%
             \textbf{\sTutorPhrase} & \tutor\\
             % Show evaluator if bachelor thesis is set.
-            \IfDocType{T3/3300}{%
+            \IfDocType{bachelor}{%
                 \textbf{\sEvaluatorPhrase} & \evaluator
             }{}%
         \end{tabular}

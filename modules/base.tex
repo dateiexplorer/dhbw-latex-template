@@ -40,6 +40,12 @@
 % PACKAGES
 %------------------------------------------------------------------------------%
 
+% Load latex3 package to use advanced programming syntax.
+% As described in https://www.alanshawn.com/latex3-tutorial/ new distribution
+% (later than 2020-02-02 release) doesn't need this package explicitly.
+% However to ensure backwards compatiblity this package is included.
+\usepackage{expl3}
+
 % Use the following babel packages, set last as default.
 % Add other languages if necessary.
 \usepackage[english, ngerman]{babel}
@@ -61,6 +67,10 @@
 % Use strings and make string operations, such as \IfStrEq available.
 \usepackage{xstring}
 
+% Use substring operations.
+% Needed to know how many authors writing on the thesis.
+\usepackage{substr}
+
 % Enable `\rgb` command to define custom colors.
 % Needed by some modules, e.g. for listings.
 \usepackage{xcolor}
@@ -78,6 +88,9 @@
 % unexpected issues.
 \usepackage{pdfpages}
 
+% Commands for if statements.
+\usepackage{ifthen}
+
 %------------------------------------------------------------------------------%
 % COMMANDS
 %------------------------------------------------------------------------------%
@@ -87,7 +100,6 @@
 % SETTINGS
 %------------------------------------------------------------------------------%
 \input{settings/metadata}
-
 
 \usepackage[
     pdftitle={\documentTitle},
@@ -130,3 +142,7 @@
 \input{additionals/fixes/supress_warning_for_koma_deprecations}
 \input{additionals/fixes/overfull_underfull_hbox_vbox}
 \input{additionals/fixes/internationalize_listing}
+
+% Do not comment out this fixes, otherwise some other pieces would not work.
+\input{additionals/fixes/support_multiple_authors}
+\input{additionals/fixes/support_source_for_figures.tex}

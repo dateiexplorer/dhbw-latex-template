@@ -1,0 +1,14 @@
+%!TEX root = ../../thesis.tex
+
+%------------------------------------------------------------------------------%
+% Support multiple authors for thesis.
+% Separate authors by a colon.
+%------------------------------------------------------------------------------%
+
+% Check if multiple authors are included.
+\newboolean{multipleAuthors}%
+\IfCharInString{,}{\documentAuthor}{%
+    \setboolean{multipleAuthors}{true}%
+}{%
+    \setboolean{multipleAuthors}{false}%
+}%
